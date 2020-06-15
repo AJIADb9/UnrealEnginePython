@@ -18,11 +18,12 @@ public class UnrealEnginePython : ModuleRules
 
     private string[] windowsKnownPaths =
     {
-       // "C:/Program Files/Python37",
+        "C:/Python36",
+        //"C:/Program Files/Python37",
         "C:/Program Files/Python36",
-        "C:/Program Files/Python35",
-        "C:/Python27",
-        "C:/IntelPython35"
+        //"C:/Program Files/Python35",
+        //"C:/Python27",
+        //"C:/IntelPython35"
     };
 
     private string[] macKnownPaths =
@@ -93,11 +94,12 @@ public class UnrealEnginePython : ModuleRules
     public UnrealEnginePython(TargetInfo Target)
 #endif
     {
+        bLegacyPublicIncludePaths = false;
 
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
         PublicDefinitions.Add("WITH_UNREALENGINEPYTHON=1"); // fixed
         string enableUnityBuild = System.Environment.GetEnvironmentVariable("UEP_ENABLE_UNITY_BUILD");
-        bUseUnity = string.IsNullOrEmpty(enableUnityBuild);
+        bUseUnity = !string.IsNullOrEmpty(enableUnityBuild);
 
         PublicIncludePaths.AddRange(
             new string[] {

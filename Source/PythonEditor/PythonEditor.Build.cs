@@ -10,16 +10,16 @@ namespace UnrealBuildTool.Rules
         public PythonEditor(TargetInfo Target)
 #endif
         {
-
             PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
             string enableUnityBuild = System.Environment.GetEnvironmentVariable("UEP_ENABLE_UNITY_BUILD");
-            bUseUnity = string.IsNullOrEmpty(enableUnityBuild);
+            bUseUnity = !string.IsNullOrEmpty(enableUnityBuild);
 
             PrivateIncludePaths.AddRange(
-                new string[] {
+                new string[]
+                {
                     "PythonEditor/Private",
                 }
-                );
+            );
 
             PrivateDependencyModuleNames.AddRange(
                 new string[]
@@ -33,15 +33,15 @@ namespace UnrealBuildTool.Rules
                     "EditorStyle",
                     "PropertyEditor",
                     "ContentBrowser",
-                    "Kismet",  // for FWorkflowCentricApplication
-					"InputCore",
+                    "Kismet", // for FWorkflowCentricApplication
+                    "InputCore",
                     "DirectoryWatcher",
                     "LevelEditor",
                     "Projects",
                     "Engine",
                     "UnrealEnginePython"
                 }
-                );
+            );
         }
     }
 }

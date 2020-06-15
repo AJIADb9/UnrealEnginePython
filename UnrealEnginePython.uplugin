@@ -14,32 +14,37 @@
 	"CanContainContent": true,
 	"IsBetaVersion": true,
 	"Installed": false,
-  "Modules": [
-    {
-      "Name": "UnrealEnginePython",
-      "Type": "Runtime",
-      "LoadingPhase": "Default"
-    },
-    {
-      "Name": "PythonAutomation",
-      "Type": "Editor",
-      "LoadingPhase": "PostDefault"
-    },
-    {
-      "Name": "PythonConsole",
-      "Type": "Editor",
-      "LoadingPhase": "PostDefault"
-    },
-    {
-      "Name": "PythonEditor",
-      "Type": "Editor",
-      "LoadingPhase": "PostDefault"
-    }
-  ],
-  "Plugins": [
-    {
-      "Name": "LevelSequenceEditor",
-      "Enabled": true
-    }
-  ]
+	"Modules": [
+		{
+			"Name": "UnrealEnginePython",
+			"Type": "DeveloperTool",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "PythonScriptRunner",
+			"Type": "DeveloperTool",
+			"LoadingPhase": "PostDefault"
+		},
+		{
+			"Name": "PythonAutomation",
+			"Type": "Editor",
+			"LoadingPhase": "PostDefault"
+		},
+		{
+			"Name": "PythonConsole",
+			"Type": "Editor",
+			"LoadingPhase": "PostDefault"
+		},
+		{
+			"Name": "PythonEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PostDefault"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "LevelSequenceEditor",
+			"Enabled": true
+		}
+	]
 }

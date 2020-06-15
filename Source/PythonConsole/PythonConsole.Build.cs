@@ -13,20 +13,22 @@ public class PythonConsole : ModuleRules
     {
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
         string enableUnityBuild = System.Environment.GetEnvironmentVariable("UEP_ENABLE_UNITY_BUILD");
-        bUseUnity = string.IsNullOrEmpty(enableUnityBuild);
+        bUseUnity = !string.IsNullOrEmpty(enableUnityBuild);
 
         PrivateIncludePaths.AddRange(
-            new string[] {
+            new string[]
+            {
                 "PythonConsole/Private",
-				// ... add other private include paths required here ...
-			}
+                // ... add other private include paths required here ...
+            }
         );
 
         PrivateDependencyModuleNames.AddRange(
-            new string[] {
+            new string[]
+            {
                 "Core",
                 "CoreUObject", // @todo Mac: for some reason it's needed to link in debug on Mac
-				"Engine",
+                "Engine",
                 "InputCore",
                 "UnrealEd",
                 "Slate",
@@ -36,6 +38,5 @@ public class PythonConsole : ModuleRules
                 "UnrealEnginePython"
             }
         );
-
     }
 }
