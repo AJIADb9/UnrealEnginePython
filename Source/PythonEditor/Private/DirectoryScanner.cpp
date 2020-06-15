@@ -49,7 +49,8 @@ struct FDirectoryScannerCommand : public IQueuedWork
 			{
 				if(bIsDirectory)
 				{
-					FoundFiles.Push(new FDirectoryResult(FilenameOrDirectory, EPythonProjectItemType::Folder));
+					if (!FPaths::GetCleanFilename(FilenameOrDirectory).StartsWith("."))
+						FoundFiles.Push(new FDirectoryResult(FilenameOrDirectory, EPythonProjectItemType::Folder));
 				}
 				else
 				{

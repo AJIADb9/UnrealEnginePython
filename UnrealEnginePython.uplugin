@@ -34,6 +34,11 @@
       "Name": "PythonEditor",
       "Type": "EditorNoCommandlet",
       "LoadingPhase": "PostDefault"
+    },
+    {
+      "Name": "PythonEditor",
+      "Type": "Editor",
+      "LoadingPhase": "PostDefault"
     }
   ],
   "Plugins": [
