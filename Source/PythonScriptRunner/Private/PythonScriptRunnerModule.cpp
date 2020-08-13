@@ -2,10 +2,6 @@
 
 #include "PythonScriptRunnerModule.h"
 
-#include "CommandLine.h"
-#include "ConfigCacheIni.h"
-#include "Engine/Engine.h"
-
 
 IMPLEMENT_MODULE(FPythonScriptRunnerModule, PythonScriptRunner);
 

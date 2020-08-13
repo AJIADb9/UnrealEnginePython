@@ -405,28 +405,36 @@ public class UnrealEnginePython : ModuleRules
 
     private string GetWindowsPythonLibFile(string basePath)
     {
-        // just for usability, report if the pythonHome is not in the system path
-        string[] allPaths = System.Environment.GetEnvironmentVariable("PATH").Split(';');
-        // this will transform the slashes in backslashes...
-        string checkedPath = Path.GetFullPath(basePath);
-        if (checkedPath.EndsWith("\\"))
-        {
-            checkedPath = checkedPath.Remove(checkedPath.Length - 1);
-        }
         bool found = false;
-        foreach (string item in allPaths)
+
+        // just for usability, report if the pythonHome is not in the system path
+        var EnvironmentPathVariable = System.Environment.GetEnvironmentVariable("PATH");
+        if (EnvironmentPathVariable != null)
         {
-            if (item == checkedPath || item == checkedPath + "\\")
+            string[] allPaths = EnvironmentPathVariable.Split(';');
+            // this will transform the slashes in backslashes...
+            string checkedPath = Path.GetFullPath(basePath);
+            if (checkedPath.EndsWith("\\"))
             {
-                found = true;
-                break;
+                checkedPath = checkedPath.Remove(checkedPath.Length - 1);
+            }
+
+            foreach (string item in allPaths)
+            {
+                if (item == checkedPath || item == checkedPath + "\\")
+                {
+                    found = true;
+                    break;
+                }
             }
         }
+
         if (!found)
         {
             System.Console.WriteLine("[WARNING] Your Python installation is not in the system PATH environment variable.");
             System.Console.WriteLine("[WARNING] Ensure your python paths are set in GlobalConfig (DefaultEngine.ini) so the path can be corrected at runtime.");
         }
+
         // first try with python3
         for (int i = 9; i >= 0; i--)
         {
