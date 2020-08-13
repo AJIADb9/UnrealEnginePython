@@ -10,35 +10,56 @@
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"SupportURL": "",
-	"EnabledByDefault": true,
 	"CanContainContent": true,
 	"IsBetaVersion": true,
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "UnrealEnginePython",
-			"Type": "DeveloperTool",
-			"LoadingPhase": "Default"
+			"Name": "PythonScriptRunner",
+			"Type": "RuntimeNoCommandlet",
+			"LoadingPhase": "Default",
+			"BlacklistTargetConfigurations": [
+				"Shipping"
+			],
+			"WhitelistPlatforms": [
+				"Win64"
+			],
+			"WhitelistTargets": [
+				"Client",
+				"Editor",
+				"Game"
+			]
 		},
 		{
-			"Name": "PythonScriptRunner",
-			"Type": "DeveloperTool",
-			"LoadingPhase": "PostDefault"
+			"Name": "UnrealEnginePython",
+			"Type": "RuntimeNoCommandlet",
+			"LoadingPhase": "None",
+			"BlacklistTargetConfigurations": [
+				"Shipping"
+			],
+			"WhitelistPlatforms": [
+				"Win64"
+			],
+			"WhitelistTargets": [
+				"Client",
+				"Editor",
+				"Game"
+			]
 		},
 		{
 			"Name": "PythonAutomation",
-			"Type": "Editor",
-			"LoadingPhase": "PostDefault"
+			"Type": "EditorNoCommandlet",
+			"LoadingPhase": "None"
 		},
 		{
 			"Name": "PythonConsole",
-			"Type": "Editor",
-			"LoadingPhase": "PostDefault"
+			"Type": "EditorNoCommandlet",
+			"LoadingPhase": "None"
 		},
 		{
 			"Name": "PythonEditor",
-			"Type": "Editor",
-			"LoadingPhase": "PostDefault"
+			"Type": "EditorNoCommandlet",
+			"LoadingPhase": "None"
 		}
 	],
 	"Plugins": [
@@ -46,5 +67,8 @@
 			"Name": "LevelSequenceEditor",
 			"Enabled": true
 		}
+	],
+	"SupportedTargetPlatforms": [
+		"Win64"
 	]
 }

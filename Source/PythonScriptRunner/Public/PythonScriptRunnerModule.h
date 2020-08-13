@@ -15,4 +15,15 @@ public:
 	virtual void StartupModule();
 	virtual void ShutdownModule();
 
+private:
+	// Ensure we have python on this machine
+	bool CanRunPython() const;
+
+	static bool CheckPathIsPythonHome(const FString& InPath);
+	
+	static void CachePythonHomePath(const FString& InPath);
+
+	static void RunPython();
+
+	static FString CachedPythonHome;
 };

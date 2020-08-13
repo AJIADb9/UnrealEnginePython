@@ -548,6 +548,8 @@ void FUnrealEnginePythonModule::StartupModule()
 
 	// release the GIL
 	PyThreadState *UEPyGlobalState = PyEval_SaveThread();
+
+	CheckCommandLineForScriptsToRun();
 }
 
 void FUnrealEnginePythonModule::ShutdownModule()
@@ -641,6 +643,16 @@ FString FUnrealEnginePythonModule::Pep8ize(FString Code)
 	return NewCode;
 }
 
+void FUnrealEnginePythonModule::CheckCommandLineForScriptsToRun()
+{
+	FString ScriptPath;
+	if (FParse::Value(FCommandLine::Get(), TEXT("-run_script="), ScriptPath))
+	{
+		UE_LOG(LogTemp, Display, TEXT("FPythonScriptRunnerModule::StartupModule => Running script: %s"), *ScriptPath);
+
+		RunFile(TCHAR_TO_UTF8(*ScriptPath));
+	}
+}
 
 void FUnrealEnginePythonModule::RunFile(char *filename)
 {
