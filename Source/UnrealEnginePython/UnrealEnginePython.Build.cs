@@ -18,12 +18,9 @@ public class UnrealEnginePython : ModuleRules
 
     private string[] windowsKnownPaths =
     {
-        "C:/Python36",
-        //"C:/Program Files/Python37",
-        "C:/Program Files/Python36",
-        //"C:/Program Files/Python35",
-        //"C:/Python27",
-        //"C:/IntelPython35"
+        "C:/python38x64",
+        "C:/Python38",
+        "C:/Program Files/Python38",
     };
 
     private string[] macKnownPaths =
@@ -230,6 +227,7 @@ public class UnrealEnginePython : ModuleRules
             string libPath = GetWindowsPythonLibFile(pythonHome);
             PublicSystemLibraryPaths.Add(Path.GetDirectoryName(libPath));
             PublicAdditionalLibraries.Add(libPath);
+            RuntimeDependencies.Add("$(TargetOutputDir)/python38.dll", Path.Combine(pythonHome, "python38.dll"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Mac)
         {

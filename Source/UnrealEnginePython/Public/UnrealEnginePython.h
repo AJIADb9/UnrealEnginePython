@@ -203,6 +203,8 @@ private:
 	void *main_module;
 
 	TSharedPtr<FSlateStyleSet> StyleSet;
+
+	void CheckCommandLineForScriptsToRun();
 };
 
 struct FScopePythonGIL
